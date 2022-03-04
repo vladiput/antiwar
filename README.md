@@ -1,7 +1,7 @@
 # Usage
 To show this on your webpage, you just need to add two lines to your html:
 ```html
-<script src=""></script>
+<script src="https://cdn.jsdelivr.net/gh/vladiput/antiwar@main/result/antiwar.js"></script>
 <div id="antiWarMessage" showTo="country,lang" />
 ```
 
