@@ -1,0 +1,21 @@
+{
+  "name": "antiwar",
+  "version": "0.1.0",
+  "homepage": "https://github.com/vladiput/antiwar#readme",
+  "license": "BSD-3-Clause",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.5.1",
+    "parcel": "^2.3.2"
+  },
+  "jest": {}
+}
