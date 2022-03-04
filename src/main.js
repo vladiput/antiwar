@@ -16,6 +16,18 @@ const textStyle = {
     "color": "#fff",
 }
 
+const titleStyle = {
+    ...textStyle,
+    "font-size": "18pt",
+    "font-weight": "700",
+}
+
+const linkStyle = {
+    ...textStyle,
+    "font-weight": "bold",
+    "text-decoration": "underline",
+}
+
 const parentContainerStyle = {
     ...textStyle,
     "position": "absolute",
@@ -67,6 +79,14 @@ const mainContentStyle = {
     "margin": "20px",
 }
 
+const stringifyCss = (cssObj) => (
+    Object.entries(cssObj).map(x=>x.join(":")).join(";")
+)
+
+const stringifiedTextStyle = stringifyCss(textStyle);
+const stringifiedLinkStyle = stringifyCss(linkStyle);
+const stringifiedTitleStyle = stringifyCss(titleStyle);
+
 const closeMessage = container => {
     container.css('display', 'none');
     container.empty();
@@ -98,15 +118,15 @@ const createContent = parent => {
     );
 
     let mainContent = $('<div />', {'css': mainContentStyle}).html(`
-        <h2>Stop the war</h2>
-        <div>
+        <h2 style="${stringifiedTitleStyle}">Stop the war</h2>
+        <div style="${stringifiedTextStyle}">
 Dear citizen of Russia, your president, mr Vladimir Putin has commenced a full-blown attack against the Republic of Ukraine, with fights ongoing every day. You may be told that this is just a special operation to "kill nazis and junkies from Kiyv". Till this day, hundreds of civilians in Ukraine have been killed due to Russia bombing residential areas, not to mention their soldiers. Furthermore, thousands of attacking Russian soldiers have lost their lives. Volodymyr Zelenskyi, the president of Ukraine tried to reach to you before the attack with an important message:
         </div>
         <iframe width="${videoWidth-40}" height="${Math.round((videoWidth-40)*0.5625)}""
         src="https://www.youtube.com/embed/Fwzb_JX7u04?&autoplay=1"frameborder="0"
         allowfullscreen></iframe>
-        <div style="margin-top: 20px;">
-Nobody wants this war, nobody threatens Russia. Ukraine is not controller by nazis and junkies. Do not believe what TASS writes, you can read more reliable news here: <a href="https://www.bbc.com/russian">https://www.bbc.com/russian</a> or <a href="https://meduza.io">https://meduza.io</a>. These are probably blocked in Russia due to Putin fearing that the truth would hurt his violent regieme, but you can use a simple webproxy to access the content: <a href="https://www.proxysite.com/">https://www.proxysite.com/</a>. You are the only ones who can end it, go out on the streets to protest! We have huge respect for every individual that is brave enough to oppose the war. Finally, just a few pictures of these "enemies" and "critical military infrastructure" Putin is attacking:
+        <div style="margin-top: 20px; ${stringifiedTextStyle}">
+Nobody wants this war, nobody threatens Russia. Ukraine is not controller by nazis and junkies. Do not believe what TASS writes, you can read more reliable news here: <a href="https://www.bbc.com/russian" style="${stringifiedLinkStyle}">https://www.bbc.com/russian</a> or <a href="https://meduza.io" style="${stringifiedLinkStyle}">https://meduza.io</a>. These are probably blocked in Russia due to Putin fearing that the truth would hurt his violent regieme, but you can use a simple webproxy to access the content: <a href="https://www.proxysite.com/" style="${stringifiedLinkStyle}">https://www.proxysite.com/</a>. You are the only ones who can end it, go out on the streets to protest! We have huge respect for every individual that is brave enough to oppose the war. Finally, just a few pictures of these "enemies" and "critical military infrastructure" Putin is attacking:
         </div>
         <div>
             <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/68BA/production/_123401862_gettyimages-1238720000.jpg" width="${(videoWidth-40)}" />
