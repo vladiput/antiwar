@@ -87,16 +87,17 @@ const stringifiedTextStyle = stringifyCss(textStyle);
 const stringifiedLinkStyle = stringifyCss(linkStyle);
 const stringifiedTitleStyle = stringifyCss(titleStyle);
 
-const closeMessage = container => {
+const closeMessage = (container, oldOverflowValue) => {
     container.css('display', 'none');
     container.empty();
+    $('body').css('overflow', oldOverflowValue);
     setDismissed();
 }
 
-const createContent = parent => {
+const createContent = (parent, oldOverflowValue) => {
 
     const closeLink = $('<a />', {href: "#", text: 'close [x]', css: closeLinkStyle});
-    closeLink.click(() => closeMessage(parent));
+    closeLink.click(() => closeMessage(parent, oldOverflowValue));
     const closeButton = $('<div />', {'css': closeButtonStyle}).append(closeLink);
     closeLink.css('color', 'fff');
     parent.append(closeButton);
@@ -160,8 +161,10 @@ $(document).ready(async () => {
         const showMsg = await shouldShowMessage(container.attr('showTo'));
 
         if(showMsg) {
+            const oldOverflowValue = $('body').css('overflow');
+            $('body').css('overflow', 'hidden')
             container.css(parentContainerStyle);
-            createContent(container);
+            createContent(container, oldOverflowValue);
         }
     }
 )
