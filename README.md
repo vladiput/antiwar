@@ -11,6 +11,11 @@ showTo attribute defines who sees the message:
 
 These are evaluated as or, e.g. "country,lang" shows the message to anybody that either has a Russian IP-address, or browser language is set to Russian.
 
+# Preview
+You can preview the page by visiting http://htmlpreview.github.io/?https://github.com/vladiput/antiwar/blob/main/result/index.html
+
+The preview page is conigured with showTo="always", so it shown to everybody.
+
 # Contributing
 Contributions are more than welcome. Following areas are most wanted:
 * Reliable source of news in Russian
