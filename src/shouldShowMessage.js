@@ -1,11 +1,14 @@
 import {detectCountry} from "./detectCountry";
 import {detectLanguage} from "./detectLanguage";
+import { isDismissed } from "./dismiss";
 
 export const shouldShowMessage = async showMsgAttr => {
     let attrs = showMsgAttr.replace(/\s+/g,'').split(',');
     if (attrs.includes('always')) {
-        console.log('Always');
         return true;
+    }
+    if (isDismissed()) {
+        return false;
     }
     if (attrs.includes('lang')) {
         if (detectLanguage() === 'ru') {

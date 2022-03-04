@@ -11,6 +11,10 @@ jest.mock("../src/detectLanguage", () => ({
     detectLanguage: jest.fn(() => 'us')
 }));
 
+jest.mock("../src/dismiss", () => ({
+    isDismissed: jest.fn(() => false)
+}));
+
 test('Test should show message with always', async () => {
     detectCountry.mockImplementation(async () => 'US');
     detectLanguage.mockImplementation(() => 'us');

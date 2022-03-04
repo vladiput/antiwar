@@ -1,6 +1,7 @@
 import 'regenerator-runtime/runtime'
 import $ from 'jquery';
 import {shouldShowMessage} from "./shouldShowMessage";
+import { setDismissed } from './dismiss';
 
 const shrink = window.innerWidth < 650;
 const shrinkHalf = window.innerWidth < 800;
@@ -8,18 +9,23 @@ const shrinkHalf = window.innerWidth < 800;
 const newsWidth = shrink ? window.innerWidth : Math.max(Math.min(Math.round(window.innerWidth * 0.25), 450), 200);
 const videoWidth = shrink ? window.innerWidth - 40 : window.innerWidth - newsWidth * (shrinkHalf ? 1 : 2)-60;
 
+const textStyle = {
+    "font-family": "Helvetica, Arial, sans-serif",
+    "font-size": "12pt",
+    "font-weight": "normal",
+    "color": "#fff",
+}
+
 const parentContainerStyle = {
+    ...textStyle,
     "position": "absolute",
     "top": "0",
     "left": "0",
     "background-color": "#000",
-    "color": "#fff",
     "width": "100%",
     "height": "100%",
     "margin": 0,
     "padding": 0,
-    "font-family": "Helvetica, Arial, sans-serif",
-    "font-size": "12pt",
     "overflow-x": "none",
     "overflow-y": "scroll",
 };
@@ -33,6 +39,7 @@ const closeButtonStyle = {
 }
 
 const closeLinkStyle = {
+    ...textStyle,
     "color": "#fff !important",
     "text-decoration": "none",
 }
@@ -63,6 +70,7 @@ const mainContentStyle = {
 const closeMessage = container => {
     container.css('display', 'none');
     container.empty();
+    setDismissed();
 }
 
 const createContent = parent => {
@@ -130,7 +138,6 @@ $(document).ready(async () => {
 
         const container = $('#antiWarMessage');
         const showMsg = await shouldShowMessage(container.attr('showTo'));
-        console.log('show: ', showMsg);
 
         if(showMsg) {
             container.css(parentContainerStyle);
