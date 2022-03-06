@@ -33,12 +33,12 @@ const parentContainerStyle = {
     "position": "absolute",
     "top": "0",
     "left": "0",
+    "bottom": "0",
+    "right": "0",
     "background-color": "#000",
-    "width": "100%",
-    "height": "100%",
     "margin": 0,
     "padding": 0,
-    "overflow-x": "none",
+    "overflow-x": "hidden",
     "overflow-y": "scroll",
 };
 
@@ -106,7 +106,7 @@ const createContent = (parent, oldOverflowValue) => {
         $('<iframe />', {
             "width": newsWidth,
             "height": shrinkHalf ? Math.round((window.innerHeight-70) * 0.5) : (window.innerHeight-70),
-            "src": "https://graniru.org/Politics/World/Europe/Ukraine/",
+            "src": "https://meduza.io",
         })
     );
 
@@ -119,15 +119,21 @@ const createContent = (parent, oldOverflowValue) => {
     );
 
     let mainContent = $('<div />', {'css': mainContentStyle}).html(`
-        <h2 style="${stringifiedTitleStyle}">Stop the war</h2>
+        <h2 style="${stringifiedTitleStyle}">Правда о войне от тебя скрыта</h2>
         <div style="${stringifiedTextStyle}">
-Dear citizen of Russia, your president, mr Vladimir Putin has commenced a full-blown attack against the Republic of Ukraine, with fights ongoing every day. You may be told that this is just a special operation to "kill nazis and junkies from Kiyv". Till this day, hundreds of civilians in Ukraine have been killed due to Russia bombing residential areas, not to mention their soldiers. Furthermore, thousands of attacking Russian soldiers have lost their lives. Volodymyr Zelenskyi, the president of Ukraine tried to reach to you before the attack with an important message:
+Уважаемый гражданин России, ваш президент, господин Владимир Путин, начал полномасштабную атаку на Украинскую Республику, бои продолжаются каждый день. Вам могут сказать, что это просто спецоперация по «уничтожению нацистов и торчков из Киева». До сегодняшнего дня сотни мирных жителей Украины были убиты из-за российских бомбардировок жилых районов, не говоря уже об их солдатах. Кроме того, тысячи нападавших российских солдат погибли. Президент Украины Владимир Зеленский перед атакой пытался донести до вас важное сообщение:
         </div>
         <iframe width="${videoWidth-40}" height="${Math.round((videoWidth-40)*0.5625)}""
         src="https://www.youtube.com/embed/Fwzb_JX7u04?&autoplay=1"frameborder="0"
-        allowfullscreen></iframe>
+        allowfullscreen style="margin-top: 20px;"></iframe>
         <div style="margin-top: 20px; ${stringifiedTextStyle}">
-Nobody wants this war, nobody threatens Russia. Ukraine is not controller by nazis and junkies. Do not believe what TASS writes, you can read more reliable news here: <a href="https://www.bbc.com/russian" style="${stringifiedLinkStyle}">https://www.bbc.com/russian</a> or <a href="https://meduza.io" style="${stringifiedLinkStyle}">https://meduza.io</a>. These are probably blocked in Russia due to Putin fearing that the truth would hurt his violent regieme, but you can use a simple webproxy to access the content: <a href="https://www.proxysite.com/" style="${stringifiedLinkStyle}">https://www.proxysite.com/</a>. You are the only ones who can end it, go out on the streets to protest! We have huge respect for every individual that is brave enough to oppose the war. Finally, just a few pictures of these "enemies" and "critical military infrastructure" Putin is attacking:
+подвергаются цензуре, потому что Путин опасается, что если вы сообщите вам правду, его режиму придет конец. Не верьте тому, что пишет ТАСС, более достоверные новости можно найти здесь: <a href="https://www.bbc.com/russian" style="${stringifiedLinkStyle}">https://www.bbc.com/russian</a>, <a href="https://meduza.io" style="${stringifiedLinkStyle}">https://meduza.io</a>.</div>
+
+<div style="margin-top: 20px; ${stringifiedTextStyle}">
+Если вы не можете их открыть, они заблокированы, чтобы скрыть правду. Можно открыть например через VPN-соединение, TOR-сеть или Webproxy: <a href="https://www.proxysite.com/" style="${stringifiedLinkStyle}">https://www.proxysite.com/</a>.</div>
+
+<div style="margin-top: 20px; ${stringifiedTextStyle}">
+Наконец-то фото с войны:
         </div>
         <div>
             <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/68BA/production/_123401862_gettyimages-1238720000.jpg" width="${(videoWidth-40)}" />
