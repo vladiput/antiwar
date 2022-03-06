@@ -30,6 +30,7 @@ const linkStyle = {
 
 const parentContainerStyle = {
     ...textStyle,
+    "z-index": "100000",
     "position": "absolute",
     "top": "0",
     "left": "0",
