@@ -1,6 +1,6 @@
 
 const ipApi = () => 'https://api.ipify.org?format=json';
-const ipDetailsApi = ipAddress => `https://ipapi.co/${ipAddress}/json`;
+const ipDetailsApi = ipAddress => `https://www.iplocate.io/api/lookup/${ipAddress}`;
 
 export const detectCountry = async () => {
     let ipAddress;
